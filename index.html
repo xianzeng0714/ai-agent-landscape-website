@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Landscape</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: 3px solid #e8491d;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        header ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+
+        header #branding {
+            float: left;
+        }
+
+        header #branding h1 {
+            margin: 0;
+        }
+
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+
+        header .highlight,
+        header .current a {
+            color: #e8491d;
+            font-weight: bold;
+        }
+
+        header a:hover {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        #newsletter {
+            padding: 15px;
+            color: #fff;
+            background: #333;
+        }
+
+        #newsletter h1 {
+            float: left;
+        }
+
+        #newsletter form {
+            float: right;
+            margin-top: 15px;
+        }
+
+        #newsletter input[type="email"] {
+            padding: 4px;
+            height: 25px;
+            width: 250px;
+        }
+
+        .button_1 {
+            height: 38px;
+            background: #e8491d;
+            border: 0;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: #fff;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .box {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 5px;
+        }
+
+        .box h3 {
+            margin-bottom: 10px;
+        }
+
+        .box img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .box img:hover {
+            transform: scale(1.05);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            padding-top: 25px;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        footer {
+            padding: 20px;
+            margin-top: 20px;
+            color: #fff;
+            background-color: #e8491d;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media(max-width: 768px) {
+            header #branding,
+            header nav,
+            header nav li,
+            #newsletter h1,
+            #newsletter form {
+                float: none;
+                text-align: center;
+            }
+
+            header nav {
+                margin-top: 0px;
+            }
+
+            #newsletter h1 {
+                margin-bottom: 10px;
+            }
+
+            #newsletter form {
+                margin-top: 0;
+            }
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Chart Styling (Placeholder) */
+        .chart-container {
+            width: 100%;
+            height: 300px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 300px;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Hover Effects */
+        .button_1:hover {
+            background-color: #c63d16;
+            cursor: pointer;
+        }
+
+        /* Image Gallery Styling */
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .gallery-item {
+            width: 30%;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-item p {
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+
+        /* Video List Styling */
+        .video-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .video-list li {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .video-list li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .video-list a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .video-list a:hover {
+            text-decoration: underline;
+        }
+
+        .video-details {
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* Interactive Button */
+        .interactive-button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .interactive-button:hover {
+            background-color: #367c39;
+        }
+
+        /* Accordion Styling */
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        .active,
+        .accordion:hover {
+            background-color: #ddd;
+        }
+
+        .accordion:after {
+            content: '\002B';
+            color: #777;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            border-radius: 0 0 5px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">AI</span> Agent Landscape</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="#">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="newsletter">
+        <div class="container">
+            <h1>Subscribe to Our Newsletter</h1>
+            <form>
+                <input type="email" placeholder="Enter Email...">
+                <button type="submit" class="button_1">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="main">
+        <div class="container">
+            <article id="main-col">
+                <div class="box">
+                    <h3>Introduction</h3>
+                    <p>Welcome to the AI Agent Landscape overview! This page provides insights into the rapidly evolving
+                        world of AI agents, including market growth, key players, technological advancements, and
+                        applications.</p>
+                </div>
+
+                <div class="box">
+                    <h3>Summary: AI Agent Landscape: Key Developments & Players</h3>
+                    <p>The AI agent market is experiencing significant growth, driven by advancements in machine
+                        learning and increasing adoption across various industries. Key players are emerging in North
+                        America and Asia Pacific, with applications ranging from customer service to cybersecurity.</p>
+                </div>
+
+                <div class="box">
+                    <h3>Market Growth</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Market Value (USD Billion)</th>
+                                <th>CAGR (2025-2030)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024</td>
+                                <td>$5.40</td>
+                                <td>N/A</td>
+                            </tr>
+                            <tr>
+                                <td>2025</td>
+                                <td>$7.92</td>
+                                <td>45.8%</td>
+                            </tr>
+                            <tr>
+                                <td>2030</td>
+                                <td>$47.1</td>
+                                <td>N/A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="box">
+                    <h3>Key Players</h3>
+                    <p>
+                        <strong>North America:</strong> Dominated by tech giants like Google, Microsoft, and IBM.<br>
+                        <strong>Asia Pacific:</strong> Expected to experience the fastest growth.
+                    </p>
+                </div>
+
+                <div class="box">
+                    <h3>Technology</h3>
+                    <p>Machine learning segment led the market in 2024.</p>
+                </div>
+
+                <div class="box">
+                    <h3>Applications</h3>
+                    <p>Customer service, cybersecurity, finance, healthcare, retail, manufacturing, logistics.</p>
+                </div>
+
+                <div class="box">
+                    <h3>Key Trends</h3>
+                    <ul>
+                        <li><strong>Autonomous AI Agents:</strong> Learning, adapting, and making real-time decisions.</li>
+                        <li><strong>AI-Powered Assistants:</strong> Creating, editing, and optimizing video content.</li>
+                        <li><strong>Sales AI Agents:</strong> Assisting with lead qualification and pipeline management.</li>
+                        <li><strong>Coding Agents:</strong> Writing, debugging, and optimizing code.</li>
+                        <li><strong>Voice Agents:</strong> Handling customer calls and proactive lead follow-up.</li>
+                        <li><strong>Automation Agents:</strong> Offloading repetitive tasks.</li>
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <h3>Images</h3>
+                    <div class="image-gallery">
+                        <div class="gallery-item">
+                            <img src="https://media.licdn.com/dms/image/v2/D5612AQFvOhVVudRHGg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1739056038281?e=2147483647&v=beta&t=7mU17p7V0o0gu50Pvd00scwzQ7XjDXfDM90LC2oWFg8"
+                                alt="A Quick Overview of AI Agent Landscape">
+                            <p>A Quick Overview of AI Agent Landscape</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://pbs.twimg.com/media/GnxVc07bYAUGTcw.jpg:large"
+                                alt="BSCDaily on X: &quot;🤖@BNBCHAIN AI Agent Landscape Recording the vibrant and  developing AI Agents ecosystem on BNB Chain. ⛓️Agent @bnbxbt_agent,  @ArtificialCZ, @tutorialtoken, @ChainGPTAINews, @Shockwaves_AI, @Laika_ai,  @AISentient_net, @AIV_Companions ...&quot;">
+                            <p>BSCDaily on X: "🤖@BNBCHAIN AI Agent Landscape Recording the vibrant and developing AI
+                                Agents ecosystem on BNB Chain. ⛓️Agent @bnbxbt_agent, @ArtificialCZ,
+                                @tutorialtoken, @ChainGPTAINews, @Shockwaves_AI, @Laika_ai, @AISentient_net,
+                                @AIV_Companions ..."</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://writer.com/wp-content/uploads/2025/04/Slide-16_9-1-2-1.png"
+                                alt="AI agents in the enterprise - Writer">
+                            <p>AI agents in the enterprise - Writer</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://writer.com/wp-content/uploads/2025/04/The-four-levels-of-agentic-systems-1.png"
+                                alt="AI agents in the enterprise - Writer">
+                            <p>AI agents in the enterprise - Writer</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://miro.medium.com/v2/resize:fit:1400/1*TQcyKPY_3QyAtFAlSd1z9A.png"
+                                alt="AI Agent-Powered Market Access and Health Economics and Outcomes Research  (HEOR) | by Alex G. Lee | Apr, 2025 | Medium">
+                            <p>AI Agent-Powered Market Access and Health Economics and Outcomes Research (HEOR) | by
+                                Alex G. Lee | Apr, 2025 | Medium</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6675383-3f8e-4ac2-8fae-42580fa7272f_1536x1024.jpeg"
+                                alt="Agents Today #14 - AI Agents GTM Strategies: The Overlooked Role of Channel  Partners in AI Agent Adoption">
+                            <p>Agents Today #14 - AI Agents GTM Strategies: The Overlooked Role of Channel Partners
+                                in AI Agent Adoption</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://miro.medium.com/v2/resize:fit:1400/1*6BgtB8Nn4UCv9ZFwFSQttg.png"
+                                alt="AI Agents: Architectures (Part-6) | by Vipra Singh | Apr, 2025 | Medium">
+                            <p>AI Agents: Architectures (Part-6) | by Vipra Singh | Apr, 2025 | Medium</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://miro.medium.com/v2/resize:fit:1400/0*PV50S1YAC5Je5_Vc"
+                                alt="Build AI Agents your way on Google Cloud | by Karl Weinmeister | Google  Cloud - Community | Apr, 2025 | Medium">
+                            <p>Build AI Agents your way on Google Cloud | by Karl Weinmeister | Google Cloud -
+                                Community | Apr, 2025 | Medium</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://guptadeepak.com/content/images/2025/04/MCP-vs-A2A---Comparing-AI-Agent-Protocol.png"
+                                alt="A Comparative Analysis of Anthropic's Model Context Protocol and Google's  Agent-to-Agent Protocol - Security Boulevard">
+                            <p>A Comparative Analysis of Anthropic's Model Context Protocol and Google's
+                                Agent-to-Agent Protocol - Security Boulevard</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2025/03/28/image001.png"
+                                alt="Build agentic systems with CrewAI and Amazon Bedrock | AWS Machine Learning  Blog">
+                            <p>Build agentic systems with CrewAI and Amazon Bedrock | AWS Machine Learning Blog</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <h3>Videos</h3>
+                    <ul class="video-list">
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=cv9xYnurGIc&vl=id" target="_blank">The Agent
+                                Landscape and What's Useful for Enterprises ...</a>
+                            <div class="video-details">
+                                Source: YouTube | Channel: Scale AI | Length: 16:06 | Date: 2 days ago
+                            </div>
+                            <p>... AI agent landscape and cover what's important for enterprises to move beyond demos
+                                to real, reliable agentic systems. 00:00 Introduction 00:28 Defining Agents ...</p>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=TBy5gzwREHI" target="_blank">How Every Employee
+                                Becomes an Agent Boss</a>
+                            <div class="video-details">
+                                Source: YouTube | Channel: The AI Daily Brief: Artificial Intelligence News | Length:
+                                16:49 | Date: 2 days ago
+                            </div>
+                            <p>Great overview of the latest 'Hot Off the Press' report. It highlights how accelerated
+                                the AI/Agent landscape is changing and what we thought or planned ...</p>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=IZJew6TsqwA" target="_blank">Unraveling the AI
+                                SDR Agent Landscape</a>
+                            <div class="video-details">
+                                Source: YouTube | Channel: Qualified | Length: 29:35 | Date: 1 week ago
+                            </div>
+                            <p>G2's Blue Bowen and Gartner's Michele Buckley break down the capabilities of AI
+                                SDRs—from list building to meeting booking—and what buyers should be ...</p>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=VhuRNLrgCWo" target="_blank">OpenAI Just
+                                Open-Sourced AI Agents—This Changes ...</a>
+                            <div class="video-details">
+                                Source: YouTube | Channel: AI Uncovered | Length: 11:52 | Date: 1 month ago
+                            </div>
+                            <p>... landscape. Whether you're a tech enthusiast, a professional seeking to stay ahead
+                                of AI trends, or someone curious about the future of artificial intelligence, ...</p>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=6fV05E3E78A" target="_blank">AI Agent
+                                Observability</a>
+                            <div class="video-details">
+                                Source: YouTube | Channel: MLOps World: Machine Learning in Production | Length: 33:55
+                                | Date: 2 days ago
+                            </div>
+                            <p>... AI Startups, she has navigated the evolving AI landscape—teaching herself Python
+                                and ML along the way. She has led cross-functional AI teams at Twilio ...</p>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=QW3KoeeXDPE" target="_blank">The Evolving
+                                Landscape of Sales Development Traditional ...</a>
+                            <div class="video-details">
+                                Source: YouTube | Channel: Jason Benedict (Automation Agency) | Length: 14:20 | Date: 1
+                                week ago
+                            </div>
+                            <p>Hiring A Sales Development Representative vs Deploying An AI Agent – What's Best for
+                                Your Business? The sales development world is evolving rapidly!</p>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/reel/DIUcf22S0Nz/" target="_blank">Adam Blandford | AI
+                                Agents are changing the Contracting ...</a>
+                            <div class="video-details">
+                                Source: Instagram | Length: 1:17 | Date: 2 weeks ago
+                            </div>
+                            <p>7 likes, 0 comments - adamblandford on April 11, 2025: "AI Agents are changing the
+                                Contracting landscape. I put out over $970000 in bids this week.</p>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/cnbc/videos/sierra-co-founder-bret-taylor-on-ai-agents-role-in-an-evolving-global-landscape/1204244881069018/"
+                                target="_blank">Sierra co-founder Bret Taylor on AI agents' role in an evolving ...</a>
+                            <div class="video-details">
+                                Source: Facebook | Channel: CNBC | Length: 2:42 | Date: 21 hours ago
+                            </div>
+                            <p>Sierra co-founder Bret Taylor on AI agents' role in an evolving global landscape.
+                                Sierra co-founder Bret Taylor discusses AI agents and where Apple's Siri ...</p>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=Ni8BPy9uK6o" target="_blank">The Secret Problem
+                                With AI Agents and How To Solve It ...</a>
+                            <div class="video-details">
+                                Source: YouTube | Channel: Alex Kantrowitz | Length: 30:20 | Date: 4 weeks ago
+                            </div>
+                            <p>... landscape. Chapters 00:00 The Rise of AI Agents on the Internet 10 ... I Tried
+                                The Ai Agent Side Hustle & Made $_,___. Wholesale Ted•91K views · 53:00.</p>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=JRi6HsrQkAk" target="_blank">Inside the AI Agent
+                                Toolbox</a>
+                            <div class="video-details">
+                                Source: YouTube | Channel: Dataiku | Length: 40:26 | Date: 1 week ago
+                            </div>
+                            <p>Workshop: AI Agent Development Landscape: Tools, Frameworks, and Resources ... The
+                                Modern AI Architecture: The Foundation for GenAI and AI Agents. Dataiku ...</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <h3>Interactive Component</h3>
+                    <button class="interactive-button" onclick="alert('AI Agents are Transforming Industries!')">Click
+                        Me!</button>
+                </div>
+
+                <div class="box">
+                    <h3>Accordion</h3>
+                    <button class="accordion">What are AI Agents?</button>
+                    <div class="panel">
+                        <p>AI agents are autonomous entities that perceive their environment through sensors and act
+                            upon that environment through actuators.</p>
+                    </div>
+
+                    <button class="accordion">How are AI Agents used?</button>
+                    <div class="panel">
+                        <p>AI Agents are used in many applications such as customer service, automation, and data
+                            analysis to improve efficiency and decision-making.</p>
+                    </div>
+
+                    <button class="accordion">What is the future of AI Agents?</button>
+                    <div class="panel">
+                        <p>The future of AI Agents involves more sophisticated decision-making, better integration
+                            with human workflows, and increased autonomy in various sectors.</p>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <h3>Conclusion</h3>
+                    <p>The AI agent landscape is poised for continued expansion and innovation, offering exciting
+                        opportunities across diverse sectors. Staying informed about the latest developments and trends
+                        is crucial for leveraging the full potential of AI agents.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer>
+        <p>AI Agent Landscape, Copyright &copy; 2025</p>
+    </footer>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
